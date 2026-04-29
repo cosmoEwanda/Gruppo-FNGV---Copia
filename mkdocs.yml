@@ -1,0 +1,19 @@
+site_name: My Docs
+nav:
+  - Home: index.md
+  - Game:
+    - Health System: pages/health_system.md
+    - Input System: pages/input.md
+    - Player: pages/player.md
+    - Inventory: pages/inventory.md
+    - Loot: pages/loot.md
+    - Time Manager: pages/time_manager.md
+  - Test:
+    - Automatic Tests: tests/automatic_tests.md
+    - Manual Tests:
+      - Time Manager: tests/time_manager_test.md
+      - Player Animations: tests/player_animation_test.md
+      - Mannequin and Respawn Manager: tests/mannequin_and_respawner_test.md
+      - Game Menu: tests/main-menu.md
+    - TestBook: artifacts/testbook.md
+theme: readthedocs

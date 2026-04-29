@@ -1,0 +1,16 @@
+{
+    "name": "CommonScriptsModule",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a256131321b23e519b1207e50067c94e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
