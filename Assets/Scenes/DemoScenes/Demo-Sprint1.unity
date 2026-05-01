@@ -3829,7 +3829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameCode::TimerUI
   TimeText: {fileID: 106632368}
   endPanel: {fileID: 2038620277}
-  timeLeft: 15
+  timeLeft: 120
 --- !u!114 &106632371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4596,7 +4596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4403290886948820853, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
       propertyPath: m_Name
-      value: spawn-square (1)
+      value: spawn-square-dealy15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985629405073921617, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
+      propertyPath: asyncActivationSeconds
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11028,7 +11032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4403290886948820853, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
       propertyPath: m_Name
-      value: spawn-square (2)
+      value: spawn-square-delay20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985629405073921617, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
+      propertyPath: asyncActivationSeconds
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16531,7 +16539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4403290886948820853, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
       propertyPath: m_Name
-      value: spawn-square
+      value: spawn-square-dealy0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985629405073921617, guid: 59729ea9b070eea4abd605cffd655e46, type: 3}
+      propertyPath: asyncActivationSeconds
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20190,7 +20202,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7639467560897715955, guid: ce289d9c246d85248ae87e6e587a4f0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2038620278}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7530220900462798005, guid: ce289d9c246d85248ae87e6e587a4f0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016694732}
   m_SourcePrefab: {fileID: 100100000, guid: ce289d9c246d85248ae87e6e587a4f0a, type: 3}
 --- !u!1001 &524391598
 PrefabInstance:
@@ -54742,6 +54757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameCode::SimpleEnemySpawner
   enemyPrefab: {fileID: 4881998833047482729, guid: 1668cff32ed12d24cad9ee4366e97906, type: 3}
   enemiesPerSpawn: 5
+  asyncActivationSeconds: 2
   spawnIntervalSeconds: 30
   offsetPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1445462114
@@ -73621,6 +73637,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4194645502125872705, guid: 0b79d4b322b94d948a664bd2f298c097, type: 3}
   m_PrefabInstance: {fileID: 1924978982}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1925571978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925571981}
+  - component: {fileID: 1925571980}
+  - component: {fileID: 1925571979}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1925571979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925571978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.StandaloneInputModule
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1925571980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925571978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1925571981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925571978}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1925644128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76316,6 +76400,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7175531006575032653, guid: 6a751a37e417f344cb983d23e7163ba3, type: 3}
   m_PrefabInstance: {fileID: 2016031623}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2016694722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7530220900462798005, guid: ce289d9c246d85248ae87e6e587a4f0a, type: 3}
+  m_PrefabInstance: {fileID: 522894156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2016694732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016694722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2e8d4345c7d5647b3717fef6828060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  healAfterSeconds: 5
+  healAmount: 5
+  healTickRate: 1
 --- !u!1001 &2017568114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80827,3 +80931,4 @@ SceneRoots:
   - {fileID: 423808058}
   - {fileID: 117110057}
   - {fileID: 286155989}
+  - {fileID: 1925571981}

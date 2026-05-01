@@ -7,12 +7,15 @@ public class TimerUI: MonoBehaviour
 	public GameObject TimeText;
     private TextMeshProUGUI timerText;
 	private HealthSystem healthSystem;
+	private bool gameEnded;
+
 	public GameObject endPanel;
 
 	public float timeLeft = 30f;
 	void Awake()
 	{
 		//endPanel.SetActive(false);
+		gameEnded = false;
 		var player = GameObject.FindWithTag("Player");
 		healthSystem = player.GetComponent<HealthSystem>();
 		healthSystem.OnDeath += GameOver;
@@ -33,6 +36,8 @@ public class TimerUI: MonoBehaviour
 
 	void Update()
 	{
+		if (gameEnded) return;
+
 		if (timeLeft <= 0)
 		{
 			YouWin();
@@ -41,9 +46,9 @@ public class TimerUI: MonoBehaviour
 		{
 			timeLeft -= Time.deltaTime;
 			UpdateVisuals(timeLeft);
-		}
-		
+		}	
 	}
+
 	public void UpdateVisuals(float timeToDisplay)
 	{
         if (timerText != null)
@@ -54,6 +59,7 @@ public class TimerUI: MonoBehaviour
 
 	private void YouWin()
 	{
+		gameEnded = true;
 		Time.timeScale = 0f; // Pause the game
 		endPanel.SetActive(true);
 		endPanel.GetComponentInChildren<TextMeshProUGUI>().text = "You Win!";
@@ -61,6 +67,7 @@ public class TimerUI: MonoBehaviour
 	}
 	private void GameOver()
 	{
+		gameEnded = true;
 		Time.timeScale = 0f; // Pause the game
 		endPanel.SetActive(true);
 		endPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Game Over";
@@ -70,6 +77,7 @@ public class TimerUI: MonoBehaviour
 	public void LoadMenuScene()
 	{       // Implement scene loading logic here (e.g., using SceneManager.LoadScene)
 		Debug.Log("Loading Main Menu...");
+		Time.timeScale = 1f;
 		SceneManager.LoadScene("MainMenu");
 	}
 }

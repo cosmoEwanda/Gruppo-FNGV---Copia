@@ -105,5 +105,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameCode::SimpleEnemySpawner
   enemyPrefab: {fileID: 4881998833047482729, guid: 1668cff32ed12d24cad9ee4366e97906, type: 3}
   enemiesPerSpawn: 3
-  spawnIntervalSeconds: 5
+  spawnIntervalSeconds: 30
   offsetPosition: {x: 0, y: 0.5, z: 0}

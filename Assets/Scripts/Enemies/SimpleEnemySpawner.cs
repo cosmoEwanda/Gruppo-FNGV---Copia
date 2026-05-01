@@ -1,33 +1,44 @@
 using UnityEngine;
 using System.Collections;
-public class SimpleEnemySpawner : MonoBehaviour
+
+public sealed class SimpleEnemySpawner : MonoBehaviour
 {
+	[Header("Settings")]
 	public GameObject enemyPrefab;
 	public int enemiesPerSpawn = 3;
 
-	public float spawnIntervalSeconds = 5f;
+	public float asyncActivationSeconds = 2f; 
+	public float spawnIntervalSeconds = 5f;   
 	public Vector3 offsetPosition;
 
-	private float delaySpawnSeconds = 0.2f;
+	private float delayBetweenEnemies = 0.2f; 
 
-	private IEnumerator coroutine;
 	void Start()
 	{
-			coroutine = SpawnEnemies(spawnIntervalSeconds);
-			StartCoroutine(coroutine);
+		
+		StartCoroutine(SpawnRoutine());
 	}
 
-	private IEnumerator SpawnEnemies(float waitTime)
+	private IEnumerator SpawnRoutine()
 	{
+		yield return new WaitForSeconds(asyncActivationSeconds);
+
 		while (true)
 		{
 			for (int i = 0; i < enemiesPerSpawn; i++)
 			{
-				Instantiate(enemyPrefab, this.transform.position + offsetPosition, Quaternion.identity);
-				yield return new WaitForSeconds(delaySpawnSeconds);
+				SpawnEnemy();
+				yield return new WaitForSeconds(delayBetweenEnemies);
 			}
-			yield return new WaitForSeconds(waitTime);
+			yield return new WaitForSeconds(spawnIntervalSeconds);
 		}
+	}
 
+	private void SpawnEnemy()
+	{
+		if (enemyPrefab != null)
+		{
+			Instantiate(enemyPrefab, transform.position + offsetPosition, Quaternion.identity);
+		}
 	}
 }
